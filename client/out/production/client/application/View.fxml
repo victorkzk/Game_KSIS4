@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
@@ -13,36 +14,73 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
-      <AnchorPane fx:id="alphabetPane" layoutX="45.0" layoutY="328.0" prefHeight="144.0" prefWidth="587.0" />
-      <AnchorPane fx:id="gameFieldPane" layoutX="218.0" layoutY="25.0" prefHeight="240.0" prefWidth="240.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="219.0" />
-      <TitledPane animated="false" layoutX="20.0" layoutY="30.0" prefHeight="222.0" prefWidth="172.0" text="Счет: 0">
+      <AnchorPane fx:id="alphabetPane" layoutX="45.0" layoutY="328.0" prefHeight="144.0" prefWidth="587.0">
+         <children>
+            <Rectangle fx:id="buttonMakeWord" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="173.0" layoutY="-36.0" onMouseClicked="#makeWordClick" stroke="BLACK" strokeType="INSIDE" width="72.0" />
+            <Label layoutX="180.0" layoutY="-32.0" mouseTransparent="true" text="Составить" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane fx:id="gameFieldPane" layoutX="225.0" layoutY="25.0" prefHeight="230.0" prefWidth="240.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="212.0" />
+      <TitledPane fx:id="titledPane1" animated="false" layoutX="20.0" layoutY="30.0" prefHeight="222.0" prefWidth="172.0" text="Счет: 0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="170.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="170.0">
+               <children>
+                  <ListView fx:id="listView1" layoutX="-1.0" layoutY="-1.0" prefHeight="197.0" prefWidth="172.0" />
+               </children></AnchorPane>
         </content>
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TitledPane>
-      <TitledPane animated="false" layoutX="480.0" layoutY="30.0" prefHeight="222.0" prefWidth="172.0" text="Счет: 0">
+      <TitledPane fx:id="titledPane2" animated="false" layoutX="480.0" layoutY="30.0" prefHeight="222.0" prefWidth="172.0" text="Счет: 0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="203.0" prefWidth="170.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="203.0" prefWidth="170.0">
+               <children>
+                  <ListView fx:id="listView2" layoutX="-1.0" layoutY="-1.0" prefHeight="197.0" prefWidth="172.0" />
+               </children></AnchorPane>
         </content>
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TitledPane>
       <Rectangle fx:id="createGameButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="512.0" layoutY="257.0" onMouseClicked="#createGameClick" stroke="BLACK" strokeType="INSIDE" width="119.0" />
-      <Label layoutX="532.0" layoutY="264.0" text="Создать игру" textFill="WHITE">
+      <Label layoutX="532.0" layoutY="264.0" mouseTransparent="true" text="Создать игру" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
       </Label>
-      <Rectangle fx:id="connectButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="47.0" layoutY="257.0" stroke="BLACK" strokeType="INSIDE" width="119.0" />
-      <Label focusTraversable="false" layoutX="62.0" layoutY="264.0" text="Подключиться" textFill="WHITE">
+      <Rectangle fx:id="connectButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="47.0" layoutY="257.0" onMouseClicked="#connectClick" stroke="BLACK" strokeType="INSIDE" width="119.0" />
+      <Label focusTraversable="false" layoutX="62.0" layoutY="264.0" mouseTransparent="true" text="Подключиться" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="ipTextField" layoutX="47.0" layoutY="292.0" prefHeight="25.0" prefWidth="119.0" promptText="IP" />
+      <TextField fx:id="ipTextField" layoutX="47.0" layoutY="292.0" prefHeight="25.0" prefWidth="119.0" promptText="IP" text="127.0.0.1" />
+      <Rectangle fx:id="wordRectangle" arcHeight="5.0" arcWidth="5.0" fill="#83c3ff" height="31.0" layoutX="218.0" layoutY="257.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+      <Label fx:id="resultWordLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="220.0" layoutY="260.0" prefHeight="27.0" prefWidth="234.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="buttonReset" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="386.0" layoutY="292.0" onMouseClicked="#resetClick" stroke="BLACK" strokeType="INSIDE" width="72.0" />
+      <Rectangle fx:id="buttonSend" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="303.0" layoutY="292.0" onMouseClicked="#sendClick" stroke="BLACK" strokeType="INSIDE" width="72.0" />
+      <Label layoutX="308.0" layoutY="296.0" mouseTransparent="true" text="Отправить" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="403.0" layoutY="296.0" mouseTransparent="true" text="Сброс" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="statusLabel" alignment="CENTER" layoutX="266.0" layoutY="6.0" prefHeight="17.0" prefWidth="147.0" text="Установите соединение">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

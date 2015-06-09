@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,14 +18,15 @@ public class BaldaGame extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String type = req.getParameter("type");
-        String word = req.getParameter("word");
+        String word = URLDecoder.decode(req.getParameter("word"), "UTF-8");
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/plain");
 
         if (type.equals("NewWord")) {
             Random randomGenerator = new Random();
             int randomIndex = randomGenerator.nextInt(startWords.size());
-            out.write(startWords.get(randomIndex));
+            String res = URLEncoder.encode(startWords.get(randomIndex), "UTF-8");
+            out.write(res);
         } else if (dictionaryConsist(word)) {
             out.write("YES");
         } else {
